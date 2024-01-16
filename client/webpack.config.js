@@ -11,7 +11,10 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js'
+      install: './src/js/install.js',
+      header: './src/js/header.js',
+      editor: './src/js/editor.js',
+      database: './src/js/database.js',
     },
     output: {
       filename: '[name].bundle.js',
@@ -34,8 +37,9 @@ module.exports = () => {
         description: 'Takes notes with Javascript syntax highlighting!',
         background_color: '#225ca3',
         theme_color: '#225ca3',
-        start_url: './',
-        publicPath: './',
+        id:'/',
+        start_url: '/',
+        publicPath: '/',
         orientation: 'portrait',
         display: 'standalone',
         icons: [
@@ -50,6 +54,10 @@ module.exports = () => {
 
     module: {
       rules: [
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
         {
           test: /\.m?js$/,
           exclude: /node_modules/,
