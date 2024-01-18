@@ -20,8 +20,8 @@ export const putDb = async (content) => {
   const request = await store.put({ id: 1, value: content });
 
   const result = await request;
-  console.log('request.value', result);
-  return result;
+  console.log('request.value', result?.value);
+  // return result?.value;
 
   // console.error('putDb not implemented');
 }
@@ -31,11 +31,11 @@ export const getDb = async () => {
   const contactDb = await openDB('jate', 1);
   const tx = await contactDb.transaction('jate', 'readonly');
   const store = await tx.objectStore('jate');
-  const request = store.getAll();
+  const request = store.get(1);
 
   const result = await request;
-  console.log('request.value', result);
-  return result
+  console.log('request.value', result?.value);
+  // return result?.value;
 
   // console.error('getDb not implemented');
 }
